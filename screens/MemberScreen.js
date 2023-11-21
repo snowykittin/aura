@@ -8,7 +8,7 @@ export default function MemberScreen({ navigation }) {
       <Text>MemberScreen</Text>
       <Button
         style={styles.button}
-        title="Create Account"
+        title="Return Home"
         onPress={() => {
           navigation.navigate("home");
         }}

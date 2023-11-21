@@ -6,6 +6,7 @@ import {
   ScrollView,
   ActivityIndicator,
   Alert,
+  Image,
 } from "react-native";
 import { TextInput, Button, List } from "react-native-paper";
 import { auth } from "../firebaseConfig";
@@ -43,9 +44,13 @@ export default function LoginScreen({ navigation }) {
   return (
     <ScrollView>
       <View style={styles.container}>
-        <Text style={styles.header}>Welcome to My Business</Text>
-        <View>
-          <Text style={styles.smallHeader}>Sign In</Text>
+        <Image
+          style={styles.horizontalLogo}
+          source={require("../assets/images/AuraLogos2/horizontal-logo-transparent-png.png")}
+          alt="Aura"
+        />
+        <Text style={styles.header}>Welcome Back!</Text>
+        <View style={styles.loginForm}>
           <TextInput
             style={styles.input}
             label="Username"
@@ -69,7 +74,7 @@ export default function LoginScreen({ navigation }) {
           </Button>
         </View>
         <View>
-          <ActivityIndicator size="large" color="#0000ff" animating={loading} />
+          <ActivityIndicator size="large" color="#A37C40" animating={loading} />
         </View>
       </View>
     </ScrollView>
@@ -79,24 +84,32 @@ export default function LoginScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#ccc",
+    backgroundColor: "#B49082",
     padding: 20,
+    minHeight: 750,
+    alignItems: "center",
   },
   header: {
     fontSize: 24,
-    fontWeight: "bold",
     textAlign: "center",
+    margin: 10,
   },
-  smallHeader: {
-    fontSize: 18,
-    fontWeight: "bold",
-    textAlign: "left",
+  horizontalLogo: {
+    width: 250,
+    height: 50,
   },
   input: {
     marginTop: 10,
+    width: 300,
   },
   button: {
     marginTop: 20,
     marginBottom: 20,
+    backgroundColor: "#98473E",
+  },
+  loginForm: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
   },
 });

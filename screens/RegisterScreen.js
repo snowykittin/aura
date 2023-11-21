@@ -6,6 +6,7 @@ import {
   ScrollView,
   ActivityIndicator,
   Alert,
+  Image,
 } from "react-native";
 import { TextInput, Button, List } from "react-native-paper";
 import { auth } from "../firebaseConfig";
@@ -20,6 +21,7 @@ export default function RegisterScreen({ navigation }) {
   const [createUserEmailAddress, setCreateUserEmailAddress] = useState();
   const [createUserPassword, setCreateUserPassword] = useState();
   const [loading, setLoading] = useState(false);
+  const [errorText, setErrorText] = useState("");
 
   const signInUser = async () => {
     setLoading(true);
@@ -31,18 +33,20 @@ export default function RegisterScreen({ navigation }) {
         createUserPassword
       )
         .then((userCredential) => {
+          setErrorText("");
           console.log("User signed in");
 
           setLoading(false);
           navigation.navigate("member");
         })
         .catch((error) => {
-          console.log("Error ", error.message);
-          Alert.alert(error.message);
           setLoading(false);
+          console.log("Error ", error.message);
+          setErrorText(error.message);
         });
     } catch (error) {
       console.log("Try error ", error.message);
+      errorText = error.message;
       setLoading(false);
     }
   };
@@ -57,6 +61,7 @@ export default function RegisterScreen({ navigation }) {
         createUserPassword
       )
         .then((userCredential) => {
+          setErrorText("");
           console.log("User created");
           setNewFirstName("");
           setNewLastName("");
@@ -67,7 +72,9 @@ export default function RegisterScreen({ navigation }) {
           setLoading(false);
         })
         .catch((error) => {
+          setLoading(false);
           console.log("Error ", error.message);
+          setErrorText(error.message);
         });
     } catch (error) {
       console.log("Try error ", error.message);
@@ -77,16 +84,21 @@ export default function RegisterScreen({ navigation }) {
   return (
     <ScrollView>
       <View style={styles.container}>
-        <Text style={styles.header}>Welcome to My Business</Text>
-        <View>
-          <Text style={styles.smallHeader}>Create Account</Text>
+        <Image
+          style={styles.horizontalLogo}
+          source={require("../assets/images/AuraLogos2/horizontal-logo-transparent-png.png")}
+          alt="Aura"
+        />
+        <Text style={styles.header}>Welcome to Aura!</Text>
+        <View style={styles.loginForm}>
           <View>
             <ActivityIndicator
               size="large"
-              color="#0000ff"
+              color="#A37C40"
               animating={loading}
             />
           </View>
+          <Text>{errorText}</Text>
           <TextInput
             style={styles.input}
             label="First name"
@@ -129,24 +141,32 @@ export default function RegisterScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#ccc",
+    backgroundColor: "#B49082",
     padding: 20,
+    minHeight: 700,
+    alignItems: "center",
   },
   header: {
     fontSize: 24,
-    fontWeight: "bold",
     textAlign: "center",
+    margin: 10,
   },
-  smallHeader: {
-    fontSize: 18,
-    fontWeight: "bold",
-    textAlign: "left",
+  horizontalLogo: {
+    width: 250,
+    height: 50,
   },
   input: {
     marginTop: 10,
+    width: 300,
   },
   button: {
     marginTop: 20,
     marginBottom: 20,
+    backgroundColor: "#98473E",
+  },
+  loginForm: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "space-evenly",
   },
 });
