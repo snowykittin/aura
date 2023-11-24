@@ -7,3 +7,5 @@ The purpose of this final project is to create a React Native app that is effect
 To run this application, clone the Git repository using the url [https://github.com/snowykittin/aura.git]. Once it has been cloned, run the command `yarn install`. You will want to launch the android or iOS emulator of your choice, then can run the NPM script for your chosen emulator to launch the app.
 
 [Color palette](https://coolors.co/d6c3c9-b49082-98473e-a37c40-07090f)
+Background pulled from Adobe Stock.
+Logo generated for this project using Vista Print.
