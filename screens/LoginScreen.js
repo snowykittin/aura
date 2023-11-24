@@ -42,7 +42,7 @@ export default function LoginScreen({ navigation }) {
   };
 
   return (
-    <ScrollView>
+    <ScrollView style={styles.scrollContainer}>
       <View style={styles.container}>
         <Image
           style={styles.horizontalLogo}
@@ -86,8 +86,12 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#B49082",
     padding: 20,
-    minHeight: 750,
     alignItems: "center",
+    height: "100%",
+  },
+  scrollContainer: {
+    backgroundColor: "#B49082",
+    flex: 1,
   },
   header: {
     fontSize: 24,
@@ -111,5 +115,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+    marginTop: 100,
   },
 });

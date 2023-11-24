@@ -35,7 +35,7 @@ export default function MemberScreen({ navigation }) {
   useEffect(() => {
     getEntriesFromFB();
     setLoading(false);
-  });
+  }, []);
 
   return (
     <View style={styles.container}>

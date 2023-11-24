@@ -103,7 +103,7 @@ export default function RegisterScreen({ navigation }) {
   };
 
   return (
-    <ScrollView>
+    <ScrollView style={styles.scrollContainer}>
       <View style={styles.container}>
         <Image
           style={styles.horizontalLogo}
@@ -164,8 +164,12 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#B49082",
     padding: 20,
-    minHeight: 700,
+    height: "100%",
     alignItems: "center",
+  },
+  scrollContainer: {
+    backgroundColor: "#B49082",
+    flex: 1,
   },
   header: {
     fontSize: 24,

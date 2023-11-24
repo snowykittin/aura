@@ -45,7 +45,7 @@ export default function AddEntryScreen({ navigation }) {
     <View style={styles.container}>
       <Text style={styles.header}>Add New Entry</Text>
       <ScrollView>
-        <Text>Event Type:</Text>
+        <Text style={styles.entryHeader}>Event Type:</Text>
         <RadioButton.Group
           onValueChange={(checkedEvent) => setCheckedEvent(checkedEvent)}
           value={checkedEvent}
@@ -53,74 +53,85 @@ export default function AddEntryScreen({ navigation }) {
           <RadioButton.Item label="Migraine without Aura" value="Migraine" />
           <RadioButton.Item label="Migraine with Aura" value="Aura Migraine" />
         </RadioButton.Group>
-        <Text>Entry Date:</Text>
+        <Text style={styles.entryHeader}>Entry Date:</Text>
         <TextInput
           label="MM/DD/YYYY"
           onChangeText={setEventDate}
           value={eventDate}
         />
-        <Text>Symptoms:</Text>
-        <Chip
-          icon="information"
-          onPress={() => setSymptoms([...symptoms, "Pain"])}
-        >
-          Pain
-        </Chip>
-        <Chip
-          icon="information"
-          onPress={() => setSymptoms([...symptoms, "Fatigue"])}
-        >
-          Fatigue
-        </Chip>
-        <Chip
-          icon="information"
-          onPress={() => setSymptoms([...symptoms, "Nausea"])}
-        >
-          Nausea
-        </Chip>
-        <Chip
-          icon="information"
-          onPress={() => setSymptoms([...symptoms, "Vomiting"])}
-        >
-          Vomiting
-        </Chip>
-        <Chip
-          icon="information"
-          onPress={() => setSymptoms([...symptoms, "Light sensitivity"])}
-        >
-          Light sensitivty
-        </Chip>
-        <Chip
-          icon="information"
-          onPress={() => setSymptoms([...symptoms, "Sound sensitivity"])}
-        >
-          Sound sensitivty
-        </Chip>
-        <Chip
-          icon="information"
-          onPress={() => setSymptoms([...symptoms, "Brain fog"])}
-        >
-          Brain fog
-        </Chip>
+        <Text style={styles.entryHeader}>Symptoms:</Text>
+        <View style={styles.chipGrid}>
+          <Chip
+            icon="information"
+            onPress={() => setSymptoms([...symptoms, "Pain"])}
+            style={styles.chipItem}
+          >
+            Pain
+          </Chip>
+          <Chip
+            icon="information"
+            onPress={() => setSymptoms([...symptoms, "Fatigue"])}
+            style={styles.chipItem}
+          >
+            Fatigue
+          </Chip>
+          <Chip
+            icon="information"
+            onPress={() => setSymptoms([...symptoms, "Nausea"])}
+            style={styles.chipItem}
+          >
+            Nausea
+          </Chip>
+          <Chip
+            icon="information"
+            onPress={() => setSymptoms([...symptoms, "Vomiting"])}
+            style={styles.chipItem}
+          >
+            Vomiting
+          </Chip>
+          <Chip
+            icon="information"
+            onPress={() => setSymptoms([...symptoms, "Light sensitivity"])}
+            style={styles.chipItem}
+          >
+            Light sensitivty
+          </Chip>
+          <Chip
+            icon="information"
+            onPress={() => setSymptoms([...symptoms, "Sound sensitivity"])}
+            style={styles.chipItem}
+          >
+            Sound sensitivty
+          </Chip>
+          <Chip
+            icon="information"
+            onPress={() => setSymptoms([...symptoms, "Brain fog"])}
+            style={styles.chipItem}
+          >
+            Brain fog
+          </Chip>
+        </View>
       </ScrollView>
-      <Button
-        style={styles.button}
-        title="Add Entry"
-        onPress={addNewEntry}
-        mode="contained"
-      >
-        Add Entry
-      </Button>
-      <Button
-        style={styles.button}
-        title="Add Entry"
-        onPress={() => {
-          navigation.navigate("member");
-        }}
-        mode="contained"
-      >
-        Cancel
-      </Button>
+      <View style={styles.btnRow}>
+        <Button
+          style={styles.button}
+          title="Add Entry"
+          onPress={addNewEntry}
+          mode="contained"
+        >
+          Add Entry
+        </Button>
+        <Button
+          style={styles.button}
+          title="Add Entry"
+          onPress={() => {
+            navigation.navigate("member");
+          }}
+          mode="contained"
+        >
+          Cancel
+        </Button>
+      </View>
     </View>
   );
 }
@@ -136,9 +147,35 @@ const styles = StyleSheet.create({
     textAlign: "center",
     margin: 10,
   },
-  button: {
-    marginTop: 5,
+  header: {
+    fontSize: 24,
+    textAlign: "center",
+    margin: 10,
+  },
+  entryHeader: {
+    fontSize: 16,
     marginBottom: 5,
+    marginTop: 5,
+    fontWeight: "bold",
+    color: "#A37C40",
+  },
+  button: {
+    margin: 10,
     backgroundColor: "#98473E",
+  },
+  chipGrid: {
+    flex: 1,
+    flexWrap: "wrap",
+    flexDirection: "row",
+    justifyContent: "space-evenly",
+  },
+  chipItem: {
+    margin: 5,
+  },
+  btnRow: {
+    flex: 1,
+    flexWrap: "wrap",
+    flexDirection: "row",
+    justifyContent: "space-around",
   },
 });
