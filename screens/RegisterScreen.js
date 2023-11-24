@@ -39,7 +39,7 @@ export default function RegisterScreen({ navigation }) {
 
           setLoading(false);
           updateUserInformation();
-          navigation.navigate("member");
+          navigation.navigate("login");
         })
         .catch((error) => {
           setLoading(false);

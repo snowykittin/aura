@@ -7,6 +7,7 @@ import LoginScreen from "./screens/LoginScreen";
 import RegisterScreen from "./screens/RegisterScreen";
 import MemberScreen from "./screens/MemberScreen";
 import AddEntryScreen from "./screens/AddEntryScreen";
+import EntryDetailScreen from "./screens/EntryDetailScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -39,6 +40,11 @@ export default function App() {
             options={{ headerShown: false }}
             name="addEntry"
             component={AddEntryScreen}
+          />
+          <Stack.Screen
+            options={{ headerShown: false }}
+            name="entryDetail"
+            component={EntryDetailScreen}
           />
         </Stack.Navigator>
       </NavigationContainer>
