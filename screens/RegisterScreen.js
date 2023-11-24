@@ -13,6 +13,7 @@ import { auth } from "../firebaseConfig";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  updateProfile,
 } from "firebase/auth";
 
 export default function RegisterScreen({ navigation }) {
@@ -37,6 +38,7 @@ export default function RegisterScreen({ navigation }) {
           console.log("User signed in");
 
           setLoading(false);
+          updateUserInformation();
           navigation.navigate("member");
         })
         .catch((error) => {
@@ -48,6 +50,25 @@ export default function RegisterScreen({ navigation }) {
       console.log("Try error ", error.message);
       errorText = error.message;
       setLoading(false);
+    }
+  };
+
+  const updateUserInformation = async () => {
+    try {
+      await updateProfile(auth.currentUser, {
+        displayName: `${newFirstName}` + " " + `${newLastName}`,
+        email: createUserEmailAddress,
+      })
+        .then(() => {
+          console.log("Updated.");
+        })
+        .catch((error) => {
+          setLoading(false);
+          console.log("Error ", error.message);
+          setErrorText(error.message);
+        });
+    } catch (error) {
+      console.log("Try error ", error.message);
     }
   };
 
