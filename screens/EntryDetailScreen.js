@@ -209,16 +209,28 @@ export default function EntryDetailScreen({ navigation, route }) {
           </Button>
         </View>
       ) : (
-        <Button
-          style={styles.button}
-          title="Delete"
-          onPress={() => {
-            setCanEdit(true);
-          }}
-          mode="contained"
-        >
-          Edit entry
-        </Button>
+        <View>
+          <Button
+            style={styles.button}
+            title="Delete"
+            onPress={() => {
+              setCanEdit(true);
+            }}
+            mode="contained"
+          >
+            Edit entry
+          </Button>
+          <Button
+            style={styles.button}
+            title="Back to Lists"
+            onPress={() => {
+              navigation.navigate("member");
+            }}
+            mode="contained"
+          >
+            Return
+          </Button>
+        </View>
       )}
     </View>
   );
