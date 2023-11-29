@@ -20,6 +20,7 @@ import {
 export default function MemberScreen({ navigation }) {
   const [entries, setEntries] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [rendered, setRendered] = useState(false);
 
   const getEntriesFromFB = async () => {
     setLoading(true);
@@ -75,17 +76,30 @@ export default function MemberScreen({ navigation }) {
         </View>
       </ScrollView>
 
-      <Button
-        style={styles.button}
-        title="Sign Out"
-        onPress={() => {
-          navigation.navigate("home");
-          signOut(auth);
-        }}
-        mode="contained"
-      >
-        Sign Out
-      </Button>
+      <View style={styles.btnRow}>
+        <Button
+          style={styles.button}
+          title="Sign Out"
+          onPress={() => {
+            navigation.navigate("home");
+            signOut(auth);
+          }}
+          mode="contained"
+        >
+          Sign Out
+        </Button>
+        <Button
+          style={styles.button}
+          title="Refresh"
+          onPress={() => {
+            getEntriesFromFB();
+            setLoading(false);
+          }}
+          mode="contained"
+        >
+          Refresh
+        </Button>
+      </View>
     </View>
   );
 }
@@ -101,6 +115,8 @@ const styles = StyleSheet.create({
     marginTop: 20,
     marginBottom: 20,
     backgroundColor: "#98473E",
+    marginRight: 10,
+    marginLeft: 10,
   },
   header: {
     fontSize: 24,
@@ -118,6 +134,12 @@ const styles = StyleSheet.create({
   },
   addButton: {
     backgroundColor: "#98473E",
+  },
+  btnRow: {
+    flex: 1,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
   },
   entriesGrid: {
     flex: 1,
