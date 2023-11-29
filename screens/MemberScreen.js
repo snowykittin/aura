@@ -60,6 +60,7 @@ export default function MemberScreen({ navigation }) {
         <View>
           {entries.map((entry, idx) => (
             <List.Item
+              key={idx}
               title={entry.data().event}
               description={entry.data().entryDate}
               onPress={() => {
