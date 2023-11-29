@@ -125,49 +125,42 @@ export default function EntryDetailScreen({ navigation, route }) {
         {canEdit ? (
           <View style={styles.chipGrid}>
             <Chip
-              icon="information"
               onPress={() => setSymptoms([...symptoms, "Pain"])}
               style={styles.chipItem}
             >
               Pain
             </Chip>
             <Chip
-              icon="information"
               onPress={() => setSymptoms([...symptoms, "Fatigue"])}
               style={styles.chipItem}
             >
               Fatigue
             </Chip>
             <Chip
-              icon="information"
               onPress={() => setSymptoms([...symptoms, "Nausea"])}
               style={styles.chipItem}
             >
               Nausea
             </Chip>
             <Chip
-              icon="information"
               onPress={() => setSymptoms([...symptoms, "Vomiting"])}
               style={styles.chipItem}
             >
               Vomiting
             </Chip>
             <Chip
-              icon="information"
               onPress={() => setSymptoms([...symptoms, "Light sensitivity"])}
               style={styles.chipItem}
             >
               Light sensitivty
             </Chip>
             <Chip
-              icon="information"
               onPress={() => setSymptoms([...symptoms, "Sound sensitivity"])}
               style={styles.chipItem}
             >
               Sound sensitivty
             </Chip>
             <Chip
-              icon="information"
               onPress={() => setSymptoms([...symptoms, "Brain fog"])}
               style={styles.chipItem}
             >
@@ -177,7 +170,7 @@ export default function EntryDetailScreen({ navigation, route }) {
         ) : (
           <View style={styles.chipGrid}>
             {currentSymptoms.map((symptom, idx) => (
-              <Chip icon="information">{symptom}</Chip>
+              <Chip style={styles.chipItem}>{symptom}</Chip>
             ))}
           </View>
         )}
@@ -267,6 +260,7 @@ const styles = StyleSheet.create({
   },
   chipItem: {
     margin: 5,
+    backgroundColor: "#B49082",
   },
   btnRow: {
     flex: 1,
