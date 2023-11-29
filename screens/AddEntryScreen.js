@@ -20,6 +20,7 @@ export default function AddEntryScreen({ navigation }) {
   const [checkedEvent, setCheckedEvent] = useState("Migraine");
   const [eventDate, setEventDate] = useState("");
   const [symptoms, setSymptoms] = useState([]);
+  const [chipSound, setChipSound] = useState(false);
 
   const addNewEntry = async () => {
     const newEntry = {
@@ -62,49 +63,43 @@ export default function AddEntryScreen({ navigation }) {
         <Text style={styles.entryHeader}>Symptoms:</Text>
         <View style={styles.chipGrid}>
           <Chip
-            icon="information"
             onPress={() => setSymptoms([...symptoms, "Pain"])}
             style={styles.chipItem}
           >
             Pain
           </Chip>
           <Chip
-            icon="information"
             onPress={() => setSymptoms([...symptoms, "Fatigue"])}
             style={styles.chipItem}
           >
             Fatigue
           </Chip>
           <Chip
-            icon="information"
             onPress={() => setSymptoms([...symptoms, "Nausea"])}
             style={styles.chipItem}
           >
             Nausea
           </Chip>
           <Chip
-            icon="information"
             onPress={() => setSymptoms([...symptoms, "Vomiting"])}
             style={styles.chipItem}
           >
             Vomiting
           </Chip>
           <Chip
-            icon="information"
             onPress={() => setSymptoms([...symptoms, "Light sensitivity"])}
             style={styles.chipItem}
           >
             Light sensitivty
           </Chip>
           <Chip
-            icon="information"
+            selected={chipSound}
             onPress={() => setSymptoms([...symptoms, "Sound sensitivity"])}
             style={styles.chipItem}
           >
             Sound sensitivty
           </Chip>
           <Chip
-            icon="information"
             onPress={() => setSymptoms([...symptoms, "Brain fog"])}
             style={styles.chipItem}
           >
@@ -171,6 +166,7 @@ const styles = StyleSheet.create({
   },
   chipItem: {
     margin: 5,
+    backgroundColor: "#B49082",
   },
   btnRow: {
     flex: 1,

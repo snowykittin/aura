@@ -33,7 +33,10 @@ export default function MemberScreen({ navigation }) {
   };
 
   useEffect(() => {
-    getEntriesFromFB();
+    async function pullAllEntries() {
+      await getEntriesFromFB();
+    }
+    pullAllEntries();
     setLoading(false);
   }, []);
 
